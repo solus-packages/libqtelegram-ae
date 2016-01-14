@@ -1,0 +1,21 @@
+name       : libqtelegram-ae
+version    : 6.1
+release    : 1
+source     :
+    - https://github.com/Aseman-Land/libqtelegram-aseman-edition/archive/v6.1-stable.tar.gz : ffc1f85a7b0cdd16149c89722f33c43de9fa3db15271d0ff26734ba35e0a02c0
+license    : GPL-3.0
+summary    : Fork of libqtelegram by Aseman Team.
+description: |
+    Fork of libqtelegram by Aseman Team.
+builddeps  :
+    - pkgconfig(gl)
+    - pkgconfig(Qt5Core)
+setup      : |
+    mkdir build && cd build
+    qmake -r .. INSTALL_LIBS_PREFIX=$installdir/%libdir% INSTALL_HEADERS_PREFIX=$installdir//usr/include
+build      : |
+    cd build
+    %make
+install    : |
+    cd build
+    %make_install
